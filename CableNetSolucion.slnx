@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="CableNet.AccesoDatos/CableNet.DataAccess.csproj" />
+    <Project Path="CableNet.dominio/CableNet.Domain.csproj" />
+    <Project Path="CableNet.Negocio/CableNet.Business.csproj" />
+    <Project Path="CableNet.WebAPI/CableNet.WebAPI.csproj" />
+  </Folder>
+</Solution>

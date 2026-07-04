@@ -1,0 +1,160 @@
+/* ==========================================
+   ESTILOS GLOBALES (pantalla normal)
+   ========================================== */
+body {
+  margin: 0;
+  background: #0a0a1a;
+  color: #e0e0e0;
+}
+.print-only {
+  display: none !important;
+}
+/* ==========================================
+   ESTILOS DE IMPRESIÓN - SOLO al imprimir
+   Todo lo de aquí adentro se aplica únicamente
+   cuando window.print() está activo
+   ========================================== */
+@media print {
+
+   
+/* El overlay deja de ser fixed para no estorbar */
+  body > div[style*="position: fixed"],
+  body > div[style*="position:fixed"] {
+    position: static !important;
+    background: white !important;
+    display: block !important;
+    inset: auto !important;
+  }
+
+  /* Ocultar TODO por defecto */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Mostrar SOLO la factura */
+  .factura-imprimible,
+  .factura-imprimible * {
+    visibility: visible !important;
+  }
+
+  /* La factura ocupa toda la hoja, sin scroll, sin restricciones */
+  .factura-imprimible {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;     /* 👈 quita el límite de altura */
+    height: auto !important;         /* 👈 deja crecer naturalmente */
+    overflow: visible !important;    /* 👈 sin scroll */
+    margin: 0 !important;
+    padding: 20px !important;
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid;        /* 👈 evita corte interno */
+  }
+
+  /* El contenedor padre del modal también */
+  .factura-imprimible {
+    transform: none !important;
+  }
+
+  /* Forzar negro sobre blanco en todo el contenido */
+  .factura-imprimible * {
+    background: transparent !important;
+    color: black !important;
+    border-color: #888 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  /* Mantener el rojo de empresa y total */
+  .factura-imprimible .resaltado {
+    color: #c0392b !important;
+    font-weight: bold !important;
+  }
+
+  /* Tabla */
+  .factura-imprimible table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: avoid;
+  }
+
+  .factura-imprimible th,
+  .factura-imprimible td {
+    border: 1px solid #888 !important;
+    padding: 8px !important;
+  }
+
+  /* Ocultar todos los botones */
+  .factura-imprimible button,
+  button.no-print,
+  .no-print {
+    display: none !important;
+  }
+
+    /* Configurar página */
+    @page {
+      size: A4;
+      margin: 1cm;
+    }
+  
+    html,
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+
+    /* ─── REGLAS PARA EL REPORTE DE ALARMA ─── */
+    .alarma-imprimible,
+    .alarma-imprimible * {
+      visibility: visible !important;
+    }
+  
+    .alarma-imprimible {
+      position: absolute !important;
+      left: 0 !important;
+      top: 0 !important;
+      width: 100% !important;
+      background: white !important;
+      color: black !important;
+      padding: 20px !important;
+      box-sizing: border-box !important;
+    }
+  
+    .alarma-imprimible table {
+      width: 100% !important;
+      border-collapse: collapse !important;
+      font-size: 11px !important;
+    }
+  
+    .alarma-imprimible th,
+    .alarma-imprimible td {
+      border: 1px solid #888 !important;
+      padding: 6px 8px !important;
+      background: white !important;
+      color: black !important;
+    }
+  
+    .alarma-imprimible th {
+      background: #eee !important;
+      font-weight: bold !important;
+    }
+  
+    .alarma-imprimible .badge,
+    .alarma-imprimible span {
+      background: white !important;
+      color: black !important;
+      border: 1px solid #888 !important;
+      padding: 2px 6px !important;
+      border-radius: 3px !important;
+    }
+
+
+}
